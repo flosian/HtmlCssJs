@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lotto</title>
+</head>
+<body>
+    <h1>1~45까지 중복되지 않는 숫자 6개 랜덤 추출 후 출력 *Set 객체 사용할 것</h1>
+
+    <button type="button" id="ranSixBtn">랜덤번호 6개 출력</button>
+    <h1 id="printRanSix"></h1>
+    <button type="button" id="ranLottoBtn">랜덤번호 7개(마지막은 보너스) 출력</button>
+    <h1 id="printLotto"></h1>
+    <button type="button" id="resultBtn">결과확인</button>
+    <h1 id="printResult"></h1>
+
+    <script>
+        let ranSixBtn = document.getElementById('ranSixBtn');
+        let ranLottoBtn = document.getElementById('ranLottoBtn');
+        let resultBtn = document.getElementById('resultBtn');
+        let printRanSix = document.getElementById('printRanSix');
+        let printLotto = document.getElementById('printLotto');
+        let printResult = document.getElementById('printResult');
+        let lottoSlt = new Set(); // 로또 번호
+        let lottoRes = new Set(); // 로또 추첨 결과
+        let lottoArr = []; // 보너스번호 판별을 위한 Array
+
+        function randomNumber(cnt){
+            let random = new Set();
+            let num;
+            while(random.size<cnt){
+                num = Math.floor(Math.random()*10)+1;
+                random.add(num);
+            }
+            return random;
+        }
+
+        ranSixBtn.addEventListener('click', ()=>{
+            lottoSlt = randomNumber(6);
+            let str = '';
+            lottoSlt.forEach(function(e, v){
+                str += `${v} `;
+            });
+            printRanSix.innerText = str;
+
+        });
+
+        ranLottoBtn.addEventListener('click', ()=>{
+            lottoRes = randomNumber(7);
+            let str = '';
+            let cnt = 0;
+            lottoRes.forEach(function(e, v){
+                str += `${v} `;
+                lottoArr[cnt] = `${v}`;
+                cnt++;
+            });
+            printLotto.innerText = str;
+
+        });
+
+        resultBtn.addEventListener('click', ()=>{
+            let correct = 0;
+            let bonus = 0;
+            let str = "";
+
+            for(const key of lottoSlt.keys()){
+                if(lottoRes.has(key)){
+                    correct++;
+                }
+                if(key==lottoArr[6]){
+                    bonus++;
+                    correct--;
+                }
+            }
+            
+            
+            switch(correct){
+                case 3: str = '5등'; break;
+                case 4: str = '4등'; break;
+                case 5:
+                    if(bonus>0){
+                        str = '2등';
+                    }else{
+                        str = '3등';
+                    }
+                    break;
+                case 6: str = '1등'; break;
+                default: str = '꽝';
+            }
+
+            printResult.innerText = str ;
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset{
+            width: 50%;
+            box-sizing: border-box;
+            border-style: solid;
+            border-color: bisque;
+            padding: 20px;
+        }
+        legend{
+            text-align: center;
+            font-size: 20px;
+        }
+        label{
+            display: block;
+            width: 20%;
+            float: left;
+        }
+        label:not(:last-child){
+            margin-bottom: 20px;
+        }
+        input{
+            width: 80%;
+            float: left;
+            box-sizing: border-box;
+        }
+        input:not(:last-child){
+            margin-bottom: 20px;
+        }
+        button{
+            width: 100%;
+            background-color: rgb(255, 233, 185);
+            border: 0;
+            height: 30px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>점수 입력</legend>
+            <label for="name">이름</label>
+            <input type="text" id="name">
+            <label for="kor">국어</label>
+            <input type="number" id="kor">
+            <label for="eng">영어</label>
+            <input type="number" id="eng">
+            <label for="mat">수학</label>
+            <input type="number" id="mat">
+            <button type="button" onclick="calcScore()">전송</button>
+        </fieldset>
+    </form>
+    <h1 id="calc"></h1>
+    <script>
+        // 이름, 국어, 영어, 수학 점수를 입력받아
+        // 합계와 평균을 출력
+        function calcScore(){
+            let name = document.getElementById('name').value;
+            let kor = document.getElementById('kor').value;
+            let eng = document.getElementById('eng').value;
+            let mat = document.getElementById('mat').value;
+
+            let sum = Number(kor)+Number(eng)+Number(mat);
+            // let avg = sum / 3;
+            let avg = Math.round(sum / 3);
+            console.log("합계 : ", sum, " 평균 : ",avg);
+            let calc = document.getElementById('calc');
+            calc.innerText = `${name} 님
+            합계 : ${sum}
+            평균 : ${avg}`;
+        }
+    </script>
+</body>
+</html>

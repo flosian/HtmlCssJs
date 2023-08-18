@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float 연습</title>
+    <!--
+        부모박스 안에 box 3개 넣기 가로로 나열(left)
+        부모박스의 크기 500px*500px
+    -->
+    <style>
+        .p_box{
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+        /*  
+            calc(식)
+            - 단위가 다른 값들을 계산해야 할 때 사용
+            - 딱 떨어지지 않는 값을 줄 때
+            - 연산자 앞뒤로 띄어쓰기 필수 => (*,/)는 붙여 써도 기능 동작하지만 띄어쓰기 권장
+        */
+        .p_box>div{
+            width: calc(100% / 3);
+            height: 100%;
+            border: 1px solid black;
+            float: left;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="p_box">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

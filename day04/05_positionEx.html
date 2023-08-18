@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .p_box{
+            width: 100%;
+            height: 200px;
+            background-color: antiquewhite;
+            position: relative;
+        }
+        .p_box>div{
+            width: 150px;
+            height: 150px;
+            float: left;
+            position: absolute;
+            top: 25px;
+        }
+        .p_box>.box1{
+            background-color: skyblue;
+            left: 25px;
+        }
+        .p_box>.box2{
+            background-color: brown;
+            left: 50%;
+            transform: translate(-50%);
+            /* transform: translate(x축, y축); */
+        }
+        .p_box>.box3{
+            background-color: blueviolet;
+            right: 25px;
+        }
+
+        .outer{
+            width: 500px;
+            height: 500px;
+            background-color: aliceblue;
+            position: relative;
+            margin: 0 auto;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="p_box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

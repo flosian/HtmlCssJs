@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+</head>
+<body>
+    <!-- 가위바위보 게임
+        컴퓨터가 가위1, 바위2, 보3 중 하나를 정하면 나도 가위, 바위, 보 중 하나를 선택하는 게임 -->
+    <!-- 가위바위보는 버튼 
+        승패에 대한 결과를 출력 총 5번 횟수
+        컴퓨터는 랜덤으로 가위, 바위, 보 중 하나를 선택
+        승률 : (이긴 횟수 / 전체 경기 수) * 100
+     -->
+    <button type="button" onclick="play(1)">
+        <img src="/image/math_img_1.jpg" alt="">
+    </button>
+    <button type="button" onclick="play(2)">
+        <img src="/image/math_img_2.jpg" alt="">
+    </button>
+    <button type="button" onclick="play(3)">
+        <img src="/image/math_img_3.jpg" alt="">
+    </button>
+    <h3 id="result">
+        <!-- 결과 출력 라인 -->
+    </h3>
+
+    <script>
+        let allCnt = 0; // 전체 경기 수
+        let win = 0;
+        let draw = 0;
+        let lose = 0;
+        let rate = 0; // 승률
+        let result = document.getElementById('result');
+        let str;
+
+        function check(chk){
+            switch(chk){
+                case 1: return '가위';
+                case 2: return '바위';
+                case 3: return '보';
+            }
+        }
+
+        function play(player){
+            allCnt++;
+            let com = Math.floor(Math.random()*3+1);
+            
+            str = `당신 : ${check(player)}
+            컴퓨터 : ${check(com)}
+            `;
+
+            switch(com-player){
+                case 0: draw++; str += '무승부'; break;
+                case -1:
+                case 2: win++; str += '이겼습니다.'; break;
+                default: lose++; str += '졌습니다.'; break;
+            }
+            rate = Math.round(win/allCnt*100);
+
+            str += `
+            승 : ${win}
+            무 : ${draw}
+            패 : ${lose}
+            승률 : ${rate}%`;
+
+            result.innerText = str;
+        }
+    </script>
+</body>
+</html>

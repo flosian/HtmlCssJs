@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our superheroes</title>
+    <style>
+        @font-face {
+            font-family: 'Splatch';
+            src: url(/font/Splatch.ttf);
+        }
+        body{
+            /* background-color: rgb(51, 51, 51); */
+            background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/image/komar-fototapeten-marvel.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            box-sizing: border-box;
+            margin: 0;
+            padding-top: 60px;
+        }
+        header, section{
+            width: 90%;
+        }
+        header{
+            text-align: center;
+            margin: 0 auto 50px;
+
+        }
+        h1{
+            font-family: 'Splatch';
+            color: #fff;
+            font-size: 50px;
+            font-weight: 300;
+            display: inline-block;
+            background-image: 
+                linear-gradient(to right, firebrick, darkorange);
+            background-size: 95% 50%;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            margin-bottom: 20px;
+        }
+        b{
+            display: block;
+            color: rgb(180, 180, 180);
+            font-size: 15px;
+        }
+        section{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0 auto;
+        }
+        section>div{
+            width: 30%;
+            color: #fff;
+            border-top: 4px solid #d1d1d1;
+            border-bottom: 2px solid #d1d1d1;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(0,0,0,0.5);
+        }
+        section>div>p:first-child{
+            font-family: 'Splatch';
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <section></section>
+
+    <script>
+        // createElement, querySelector
+
+        let header = document.querySelector('header');
+        let section = document.querySelector('section');
+
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+        .then(resp => resp.json())
+        .then(json => {
+            setHeader(json),
+            setSection(json)
+        });
+
+        function setHeader(jsonObj){
+            header.innerHTML = `<h1>${jsonObj['squadName']}</h1>`;
+            header.innerHTML += `<b>homeTown: ${jsonObj['homeTown']} // `
+                +`formed: ${jsonObj['formed']}</b>`;
+        }
+
+        function setSection(jsonObj){
+            let str = '';
+
+            for(let i=0; i<3; i++){
+                console.log(jsonObj['members'][i]);
+                
+                str += `<div>`
+                    +`<p>${jsonObj['members'][i]['name']}</p>`
+                    +`<p>secretIdentity : ${jsonObj['members'][i]['secretIdentity']}</p>`
+                    +`<p>age : ${jsonObj['members'][i]['age']}</p><ul>`;
+
+                for(let j of jsonObj['members'][i]['powers']){
+                    str += `<li>${j}</li>`;
+                }
+
+                str += `</ul></div>`;
+            }
+
+            section.innerHTML += str;
+
+        }
+
+    </script>
+</body>
+</html>

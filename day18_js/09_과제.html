@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>itemList</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        h1{
+            text-align: center;
+        }
+        div{
+            background-color: #79E0EE;
+            width: 80%;
+            height: 100px;
+            margin: 0 auto;
+            padding-top: 30px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        div>*{
+            box-sizing: border-box;
+            height: 40px;
+        }
+        div>input{
+            width: 70%;
+            font-size: 20px;
+        }
+        div>input:focus{
+            outline: 0;
+        }
+        div>button{
+            width: 50px;
+            border: 0;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        #itemList{
+            width: 80%;
+            list-style-type: none;
+            margin: 0 auto;
+            padding: 0;
+        }
+        #itemList>li{
+            position: relative;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+        }
+        #itemList>li:nth-child(even){
+            background-color: #98EECC;
+        }
+        #itemList>li:nth-child(odd){
+            background-color: #D0F5BE;
+        }
+        #itemList>li:hover{
+            background-color: #FBFFDC;
+        }
+        #itemList>li>span{
+            position: absolute;
+            right: 0;
+            width: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>여행 준비물 점검 목록</h1>
+    <div>
+        <input type="text" id="itemInput">
+        <button type="button" id="addBtn">추가</button>
+    </div>
+    <ul id="itemList"></ul>
+
+    <script>
+        let itemInput = document.getElementById('itemInput');
+        let addBtn = document.getElementById('addBtn');
+        let itemList = document.getElementById('itemList');
+
+        let items = [];
+
+        // 리스트 출력 함수
+        function printList(){
+            let str = '';
+            for(let i=0; i<items.length; i++){
+                str += `<li id="list${i}">${items[i]}<span onclick="del(${i})">X</span></li>`;
+            }
+            itemList.innerHTML = str;
+        }
+
+        // 배열 요소 삭제 함수
+        function del(i){
+            items.splice(i,1);
+            printList();
+        }
+
+        // 추가 버튼
+        addBtn.addEventListener('click',()=>{
+            let cnt = items.length;
+            items[`${cnt}`] = itemInput.value;
+            printList();
+        })
+
+        
+
+    </script>
+</body>
+</html>

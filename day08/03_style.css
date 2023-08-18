@@ -1,0 +1,56 @@
+@import url(reset.css);
+@keyframes rotate{
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(360deg); }
+}
+.wrap{
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/image/airplain.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.notice{
+    width: 700px;
+    background-color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 30px;
+}
+.notice img{
+    width: 50px;
+    margin-bottom: 30px;
+}
+.notice h2{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+.notice span{
+    animation: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    margin-bottom: 15px;
+}
+.notice>p{
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+.notice>div:last-child{
+    background-color: rgb(235, 235, 235);
+    border-top: 1px solid gray;
+    padding: 10px 0 20px 0;
+}
+.notice>div:last-child>p{
+    font-size: 12px;
+    line-height: 16px;
+}
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btnNew{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="eleArea">
+        <button type="button" id="btnCre">엘리먼트 만들기</button>
+        <button type="button" id="btnNew">생성된 버튼</button>
+    </div>
+    <script>
+        let btnCre = document.getElementById('btnCre');
+        btnCre.addEventListener('click',()=>{
+            document.getElementById('btnNew').style.display = 'inline-block';
+        })
+        document.getElementById('btnNew').addEventListener('click',()=>{
+            document.getElementById('eleArea').innerHTML += '<h1 id="str">생성된 버튼을 클릭함!</h1>';
+        })
+    </script>
+</body>
+</html>

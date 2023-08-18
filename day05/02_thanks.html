@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap>div{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            color: white;
+            font-weight: 700;
+            display: inline-block;
+            text-align: center;
+            /* float: left; */
+            position: relative;
+        }
+        .wrap>div:not(:last-child){
+            margin-right: 10px;
+        }
+        .wrap>div:hover{
+            /* transform: translate(10px, 10px); */
+            top: 10px;
+            left: 10px;
+            background-color: rgb(202, 96, 96);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div>T</div>
+        <div>H</div>
+        <div>A</div>
+        <div>N</div>
+        <div>K</div>
+        <div>S</div>
+    </div>
+</body>
+</html>

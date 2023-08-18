@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            /* border-collapse: collapse; */
+            border: 1px solid black;
+        }
+        tr, td{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>데이터 리스트</h3>
+    <ol>
+        <li>이름 <input type="text" id="name"></li>
+        <li>거주지 <input type="text" id="addr"></li>
+        <li>
+            좋아하는 리스트
+            <ul>
+                <li>1. <input type="text" id="favor1"></li>
+                <li>2. <input type="text" id="favor2"></li>
+                <li>3. <input type="text" id="favor3"></li>
+            </ul>
+        </li>
+        <li>이메일 <input type="email" id="email"></li>
+        <li>pet 소유 여부 <input type="text" id="pet"></li>
+        <li>지금 가장 원하는 것 <input type="text" id="wanna"></li>
+    </ol>
+    <button type="button" onclick="getDatas()">제출</button>
+    <button type="button" onclick="printTable()">테이블 출력</button>
+    <h3>리스트의 구조에 따라 자바스크립트 객체를 만들어보자</h3>
+    <!-- 입력받을 input 구조 생성 -->
+
+
+    <table>
+        <tbody>
+            <tr>
+                <td>이름</td>
+                <td id="nameTd"></td>
+            </tr>
+            <tr>
+                <td>거주지</td>
+                <td id="addrTd"></td>
+            </tr>
+            <tr>
+                <td>좋아하는 리스트</td>
+                <td>
+                    <ul id="favorUl">
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td id="emailTd"></td>
+            </tr>
+            <tr>
+                <td>pet 소유 여부</td>
+                <td id="petTd"></td>
+            </tr>
+            <tr>
+                <td>지금 가장 원하는 것</td>
+                <td id="wannaTd"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const dataObj = {
+            name : "",
+            addr : "",
+            favors : {
+                favor1:"",
+                favor2:"",
+                favor3:""
+            },
+            email : "",
+            pet : "",
+            wanna : ""
+        };
+
+        // 위 html에서 받은 값을 객체에 저장 후 콘솔에 출력
+        // let 변수명;
+        // 변수명 = 값;
+
+        function getDatas(){
+            dataObj.name = document.getElementById('name').value;
+            dataObj.addr = document.getElementById('addr').value;
+            dataObj.favors.favor1 = document.getElementById('favor1').value;
+            dataObj.favors.favor2 = document.getElementById('favor2').value;
+            dataObj.favors.favor3 = document.getElementById('favor3').value;
+            dataObj.email = document.getElementById('email').value;
+            dataObj.pet = document.getElementById('pet').value;
+            dataObj.wanna = document.getElementById('wanna').value;
+
+            console.log(`
+            이름 : ${dataObj.name}
+            거주지 : ${dataObj.addr}
+            좋아하는 리스트
+            1. ${dataObj.favors.favor1}
+            2. ${dataObj.favors.favor2}
+            3. ${dataObj.favors.favor3}
+            이메일 : ${dataObj.email}
+            pet 소유 : ${dataObj.pet}
+            지금 가장 원하는 것 : ${dataObj.wanna}
+            `);
+        }
+        
+        function printTable(){
+            document.getElementById('nameTd').innerText = dataObj.name;
+            document.getElementById('addrTd').innerText = dataObj.addr;
+            document.getElementById('favorUl').innerHTML = `<li>${dataObj.favors.favor1}</li>`;
+            document.getElementById('favorUl').innerHTML += `<li>${dataObj.favors.favor2}</li>`;
+            document.getElementById('favorUl').innerHTML += `<li>${dataObj.favors.favor3}</li>`;
+            document.getElementById('emailTd').innerText = dataObj.email;
+            document.getElementById('petTd').innerText = dataObj.pet;
+            document.getElementById('wannaTd').innerText = dataObj.wanna;
+        }
+    </script>
+</body>
+</html>

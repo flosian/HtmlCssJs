@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/day03/과제css.css">
+    <title>Document</title>
+    <style>
+        a:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Travle</h1>
+    <ul>
+        <li>
+            <a id="airplain" onclick="clickCity(this)">HOME</a>
+        </li>
+        <li>
+            <a id="seoul" onclick="clickCity(this)">Korea</a>
+        </li>
+        <li>
+            <a id="tokyo" onclick="clickCity(this)">Japan</a>
+        </li>
+        <li>
+            <a id="france" onclick="clickCity(this)">France</a>
+        </li>
+        <li>
+            <a id="britain" onclick="clickCity(this)">Britain</a>
+        </li>
+    </ul>
+    <div>
+        <img src="/image/airplain.jpg" alt="" id="cityImg">
+    </div>
+    <!-- <script>
+        let img = document.getElementById('image');
+
+        let home = document.getElementById('home');
+        home.addEventListener('click',()=>{
+            img.src='/image/airplain.jpg';
+        })
+        
+        let korea = document.getElementById('korea');
+        korea.addEventListener('click',()=>{
+            img.src='/image/seoul.jpg';
+        })
+        
+        let japan = document.getElementById('japan');
+        japan.addEventListener('click',()=>{
+            img.src='/image/tokyo.jpg';
+        })
+        
+        let france = document.getElementById('france');
+        france.addEventListener('click',()=>{
+            img.src='/image/france.jpg';
+        })
+        
+        let britain = document.getElementById('britain');
+        britain.addEventListener('click',()=>{
+            img.src='/image/Britain.jpg';
+        })
+    </script> -->
+    <script>
+        const clickCity = (elem) =>{
+            console.log(elem);
+            console.log(elem.id);
+            let idVal = elem.id;
+            document.getElementById('cityImg').src =
+            `/image/${idVal}.jpg`;
+        }
+    </script>
+</body>
+</html>

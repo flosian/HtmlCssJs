@@ -1,0 +1,118 @@
+@import url(reset.css);
+body{
+    font-family: 'Josefin Sans', sans-serif;
+}
+a{
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+.navbar{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    padding: 0 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar>a{
+    font-size: 20px;
+    color: #000;
+    line-height: 60px;
+}
+.navbar ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar ul li{
+    margin: 0 15px;
+}
+.navbar ul li a{
+    color: #000;
+    line-height: 60px;
+    font-size: 15px;
+}
+.main-img{
+    background-image: url(/image/banner06.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 50vh;
+    margin-bottom: 100px;
+}
+h1{
+    font-size: 30px;
+    color: #555555;
+    text-align: center;
+    letter-spacing: -1px;
+    margin-bottom: 120px;
+}
+.products{
+    width: 80%;
+    margin: 0 auto 100px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.products a{
+    margin-bottom: 40px;
+    position: relative;
+}
+.products a .image{
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    text-align: center;
+}
+.products a img{
+    transition: 0.2s;
+}
+.products a img:hover{
+    transform: scale(1.1);
+}
+.products a p{
+    display: none;
+}
+.products a:hover p{
+    display: block;
+    position: absolute;
+    width: 50%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    line-height: 30px;
+    bottom: 110px;
+    color: #e72929;
+    font-size: 16px;
+    font-weight: 700;
+    left: 50%;
+    transform: translate(-50%);
+}
+.products a ul{
+    margin-top: 30px;
+
+}
+.products a ul li{
+    color: #3d3d3d;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.products ul li:first-child{
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: 16px;
+    color: #555555;
+}
+.footer{
+    background-color: #3d3d3d;
+    color: #fff;
+    width: 100%;
+    height: 200px;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+.footer .bi{
+    line-height: 200px;
+    cursor: pointer;
+    font-size: 30px;
+    margin: 0 10px;
+}

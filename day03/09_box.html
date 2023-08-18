@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <title>box 속성</title>
+    <!--  
+        box
+        width : 가로길이
+        box-sizing : box의 크기를 지정하는 속성
+        margin : box의 바깥 여백
+        padding : box의 안쪽 여백
+
+        box-sizing에 따라 width의 크기가 컨텐츠자체의 가로가 될 수도 있고,
+        박스 전체의 가로가 될 수도 있음.
+        - border-box => width = 컨텐츠의 가로 + padding + border
+        - content-box => width = 컨텐츠의 가로
+        width = 100px  padding = 5px  border = 1px
+        borderbox : 88px + 5px + 5px + 1px + 1px => 100px   => 많이 사용
+        contentbox : 100px + 5px + 5px + 1px + 1px => 112px
+
+    -->
+    <style>
+        .box1{
+            /* 100px = 2px + 40px + 58px */
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .box2{
+            /* 100px + 2px + 40px = 142px */
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 20px;
+            box-sizing: content-box;
+            margin-bottom: 50px;
+        }
+        /* box를 클릭하면 naver로 이동하는 버튼 */
+        div.user{
+            width: 440px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        div.user ul{
+            list-style: none;
+            padding: 0;
+        }
+        div.user ul li{
+            display: inline;
+            color: 3d3d3d;
+        }
+        div.user ul li:not(:last-child){
+            padding-right: 10px;
+        }
+        div.user ul li:not(:last-child)::after{
+            content: "|";
+            padding-left: 10px;
+            color: #5d5d5d;
+        }
+        div.naver{
+            width: 400px;
+            height: 50px;
+            background-color: #03c75a;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            text-align: center;
+            box-sizing: border-box;
+
+        }
+        div.naver:hover{
+            background-color: #00b869;
+        }
+        div.naver a{
+            font-size: 20px;
+            line-height: 50px;
+            font-weight: 400;
+            text-decoration: none;
+            display: block;
+            font-family: 'Archivo Black', sans-serif;
+        }
+        div.naver a::after{
+            content: "로그인";
+            font-size: 15px;
+            padding-left: 5px;
+        }
+        div.naver a:link{
+            color: white;
+        }
+        div.naver a:visited{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="user">
+        <p>네이버를 더 안전하고 편리하게 이용하세요</p>
+        <div class="naver">
+            <a href="https://www.naver.com/">NAVER</a>
+        </div>
+        <ul>
+            <li>아이디 찾기</li>
+            <li>비밀번호 찾기</li>
+            <li>회원가입</li>
+        </ul>
+    </div>
+    
+</body>
+</html>

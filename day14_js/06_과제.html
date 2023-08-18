@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .discol{
+            background-color: red;
+        }
+        .col{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        구구단 영역(2*1=2 ~ 9*9=81)내에서 랜덤으로 문제를 내면 정답을 맞추는 로직
+    </h1>
+    <ul>
+        <li>
+            총 문제는 10문제 출제
+        </li>
+        <li>
+            문제를 풀 때 정답, 오답의 결과를 나타냄
+        </li>
+        <li>
+            총 10개의 문제 중 정답률을 출력
+        </li>
+    </ul>
+
+    <button type="button" id="btnQst">문제출제</button>
+
+    <ol id="question"></ol>
+
+    <button type="button" id="btnCol">정답 확인</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        let answer = {};
+        // let userGuess = {}; 
+        let question = document.getElementById('question');
+
+        document.getElementById('btnQst').addEventListener('click', ()=>{
+            let str = '';
+            let ranDan;
+            let ranSu;
+
+            for(let i=1; i<=10; i++){
+                ranDan = Math.floor(Math.random()*(9-2+1))+2;
+                ranNum = Math.floor(Math.random()*9)+1;
+
+                str += `<li>${ranDan} X ${ranNum} = <input type="text" id="userAns${i}"></li>`;
+                answer[`ans${i}`] = ranDan*ranNum;
+            }
+            question.innerHTML = str;
+
+            console.log(answer);
+        });
+        
+        document.getElementById('btnCol').addEventListener('click', ()=>{
+            let userAns;
+            let colCnt = 0;
+            let result = document.getElementById('result');
+
+            for(let i=1; i<=10; i++){
+                userAns = document.getElementById(`userAns${i}`);
+                if(userAns.value == answer[`ans${i}`]){
+                    userAns.value += ' 정답';
+                    userAns.className = 'col';
+                    colCnt++;
+                    console.log(colCnt);
+                }else{
+                    userAns.value += ' 오답';
+                    userAns.className = 'discol';
+                }
+            }
+
+            result.innerText = `승률 : ${Math.floor(colCnt/10*100)}%`;
+
+        });
+
+    </script>
+</body>
+</html>

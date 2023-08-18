@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="/image/dog.jpg" id="dogImg">
+
+    <script>
+        let dogArr = ['dog','dog1','dog2','dog3'];
+        let image = document.getElementById('dogImg');
+
+        function changeImg(){
+            let ran = Math.floor(Math.random()*4);
+            image.src = `/image/${dogArr[ran]}.jpg`;
+        }
+        setInterval(changeImg,1000);
+    </script>
+</body>
+</html>
